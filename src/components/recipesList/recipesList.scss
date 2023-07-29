@@ -1,0 +1,12 @@
+@import '../../scss/mixins';
+
+.recipes-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 340px) {
+    grid-template-columns: 1fr;
+  }
+}

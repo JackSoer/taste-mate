@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import './scss/reset.scss';
+@import './scss/mixins';
+@import './scss/var';
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  background-color: $lightGray;
+}
+
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 25px 15px 80px 15px;
+
+  @include tablet {
+    max-width: 768px;
+  }
+
+  @include mobile {
+    max-width: 360px;
+  }
+}

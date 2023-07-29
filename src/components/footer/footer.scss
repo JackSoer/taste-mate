@@ -1,0 +1,71 @@
+@import '../../scss/var';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 5000;
+  padding: 0 15px;
+
+  box-shadow: 0 0 10px 5px $lightPink;
+  background-color: $white;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 100%;
+    padding: 8px 0 13px 0;
+
+    &--active {
+      p {
+        color: $red;
+        font-weight: 700;
+      }
+
+      svg {
+        path {
+          fill: $red;
+        }
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: $red;
+        border-radius: 2px;
+
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    &-img {
+      width: 25px;
+      height: 25px;
+      fill: $darkGray;
+
+      path {
+        fill: $darkGray;
+      }
+    }
+
+    &-title {
+      color: $darkGray;
+    }
+  }
+}

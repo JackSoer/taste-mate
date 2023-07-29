@@ -1,0 +1,18 @@
+// Medie query
+
+@mixin mobile {
+  @media (max-width: 361px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 769px) {
+    @content;
+  }
+}
+
+// Gradient
+@mixin linearGradient($fromColor, $toColor) {
+  background: linear-gradient(90deg, $fromColor 0%, $toColor 100%);
+}
