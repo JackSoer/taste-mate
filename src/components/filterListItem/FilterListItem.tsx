@@ -1,3 +1,4 @@
+import './filterListItem.scss';
 import { ReactElement } from 'react';
 
 type PropsType = {
@@ -7,7 +8,7 @@ type PropsType = {
 
 const FilterListItem = ({ title, id }: PropsType): ReactElement => {
   return (
-    <div className="filter-list-item">
+    <li className="filter-list-item">
       <input
         type="checkbox"
         className="filter-list-item__checkbox"
@@ -19,7 +20,7 @@ const FilterListItem = ({ title, id }: PropsType): ReactElement => {
       >
         {title}
       </label>
-    </div>
+    </li>
   );
 };
 

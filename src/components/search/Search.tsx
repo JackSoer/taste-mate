@@ -1,11 +1,33 @@
 import './search.scss';
-import { ReactElement } from 'react';
+import { ChangeEvent, ReactElement, useRef, useState } from 'react';
 import FilterIcon from '../../assets/images/icons/filter.svg';
+import Filter from '../filter/Filter';
+import RecipeType from '../../types/RecipeType';
 
-const Search = (): ReactElement => {
+type PropsType = {
+  setRecipes: React.Dispatch<React.SetStateAction<RecipeType[]>>;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Search = ({ search, setSearch }: PropsType): ReactElement => {
+  const [filterIsOpen, setFilterIsOpen] = useState<boolean>(false);
+
+  const filterBtn = useRef<HTMLButtonElement | null>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="search">
-      <input type="text" className="search__input" placeholder="Search" />
+      <input
+        type="text"
+        className="search__input"
+        placeholder="Search"
+        value={search}
+        onChange={(e) => handleChange(e)}
+      />
       <div className="search__icon">
         <svg
           fill="#ff555f"
@@ -23,13 +45,22 @@ const Search = (): ReactElement => {
           />
         </svg>
       </div>
-      <button className="search__filter-btn">
+      <button
+        className="search__filter-btn"
+        onClick={() => setFilterIsOpen(true)}
+        ref={filterBtn}
+      >
         <img
           src={FilterIcon}
           alt="filter"
           className="search__filter-btn-icon"
         />
       </button>
+      <Filter
+        filterIsOpen={filterIsOpen}
+        setFilterIsOpen={setFilterIsOpen}
+        filterBtn={filterBtn}
+      />
     </div>
   );
 };

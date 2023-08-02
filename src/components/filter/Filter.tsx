@@ -1,15 +1,43 @@
-import { ReactElement } from 'react';
-import filterList from '../../data/filterList';
-import FilterListItem from '../filterListItem/FilterListItem';
+import './filter.scss';
+import { ReactElement, useEffect, useRef } from 'react';
+import FilterList from '../filterList/FilterList';
 
-const Filter = (): ReactElement => {
+type PropsType = {
+  filterIsOpen: boolean;
+  setFilterIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  filterBtn: React.MutableRefObject<HTMLButtonElement | null>;
+};
+
+const Filter = ({
+  filterIsOpen,
+  setFilterIsOpen,
+  filterBtn,
+}: PropsType): ReactElement => {
+  const filterRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClose = (e: any): void => {
+      if (
+        !filterRef?.current?.contains(e.target) &&
+        !filterBtn?.current?.contains(e.target)
+      ) {
+        setFilterIsOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClose);
+    return () => {
+      document.removeEventListener('click', handleClose);
+    };
+  }, []);
+
   return (
-    <div className="overlay">
-      <div className="filter">
+    <div className={filterIsOpen ? 'overlay overlay--active' : 'overlay'}>
+      <div
+        className={filterIsOpen ? 'filter filter--active' : 'filter'}
+        ref={filterRef}
+      >
         <h3 className="filter__title">Filter</h3>
-        {filterList.map((filterItem) => (
-          <FilterListItem title={filterItem.title} id={filterItem.id} />
-        ))}
+        <FilterList />
         <div className="filter__btns">
           <button className="filter__reset-btn">Reset</button>
           <button className="filter__apply-btn">Apply</button>

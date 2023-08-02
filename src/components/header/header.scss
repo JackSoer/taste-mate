@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: white;
+  padding: 12px;
+  position: fixed;
+  top: 0;
+  z-index: 8000;
+
+  &__back-link {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 12px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+}

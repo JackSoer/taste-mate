@@ -1,0 +1,22 @@
+@import '../../scss/var';
+
+.filter-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__checkbox {
+    accent-color: $red;
+    width: 19px;
+    height: 19px;
+    pointer-events: none;
+
+    @media (hover: hover) {
+      pointer-events: all;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+  }
+}

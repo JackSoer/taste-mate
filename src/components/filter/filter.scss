@@ -1,0 +1,70 @@
+@import '../../scss/var';
+@import '../../scss/mixins';
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.527);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .filter {
+    background-color: $white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 10px 15px 10px;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+
+    &--active {
+      transform: translateY(0);
+    }
+
+    &__title {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    &__reset-btn,
+    &__apply-btn {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 13px 0;
+      border-radius: 10px;
+    }
+
+    &__apply-btn {
+      color: $white;
+      @include linearGradient($red, $yellow);
+    }
+
+    &__reset-btn {
+      border: 1px solid $gray;
+    }
+  }
+}
